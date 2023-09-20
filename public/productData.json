@@ -1,0 +1,17 @@
+{
+  "123456789": {
+    "name": "Product A",
+    "material": "Plastic",
+    "recyclable": true
+  },
+  "987654321": {
+    "name": "Product B",
+    "material": "Papier",
+    "recyclable": true
+  },
+  "456789123": {
+    "name": "Product C",
+    "material": "Glas",
+    "recyclable": false
+  }
+}
