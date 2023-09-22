@@ -1,11 +1,15 @@
 .App {
   text-align: center;
+  background-color: #A0C49D;
+
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -32,7 +36,29 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* my own things */
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #7EAA92;
+  color: white;
+  padding: 20px;
+  text-align: center;
+
+}
+
+
+
+.app-container {
+  height: 100vh;
+  background-color: #A0C49D;
 }
