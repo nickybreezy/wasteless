@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import productDataJson from './productData.json';
+import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BiScan } from 'react-icons/bi';
@@ -44,8 +45,8 @@ function App() {
           ) : (
             <p>Dit product is niet recyclebaar.</p>
           )}
-
         </div>
+        <BarcodeScanner />
         <div className="bottom-bar">
           <button className="btn btn-solid">
             <BiAward style={{ color: 'white' }} />
