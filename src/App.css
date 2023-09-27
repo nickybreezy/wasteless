@@ -49,7 +49,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #7EAA92;
+  background-color: #3C6255;
   color: white;
   padding: 20px;
   text-align: center;
@@ -60,5 +60,5 @@
 
 .app-container {
   height: 100vh;
-  background-color: #A0C49D;
+  background-color: #61876E;
 }

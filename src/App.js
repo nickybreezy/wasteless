@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import productDataJson from './productData.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BiScan } from 'react-icons/bi'; // Import the Amazon icon from react-icons library
+import { BiScan } from 'react-icons/bi';
+import { BiCurrentLocation } from 'react-icons/bi';
+import { BiAward } from 'react-icons/bi';
 
 function App() {
   const [productData, setProductData] = useState({});
@@ -45,10 +47,15 @@ function App() {
 
         </div>
         <div className="bottom-bar">
+          <button className="btn btn-solid">
+            <BiAward style={{ color: 'white' }} />
+          </button>
           <button className="btn btn-solid" onClick={() => handleScan('456789123')}>
             <BiScan style={{ color: 'white' }} />
           </button>
-
+          <button className="btn btn-solid">
+            <BiCurrentLocation style={{ color: 'white' }} />
+          </button>
         </div>
       </div>
 
