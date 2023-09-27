@@ -1,0 +1,10 @@
+.custom-bg {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  height: 100vh;
+  background-color: #61876e;
+  padding: 24px;
+}

@@ -4,11 +4,28 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import {
+  RouterProvider, createBrowserRouter
+} from "react-router-dom"
+import Map from './Map';
+import BadgesPage from './BadgesPage';
+
+const router = createBrowserRouter([
+  {
+    path: "/", element: <App />
+  },
+  {
+    path: "/map", element: <Map />
+  },
+  {
+    path: "/badges", element: <BadgesPage />
+  },
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
