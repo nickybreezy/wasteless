@@ -3,9 +3,15 @@ import { useZxing } from "react-zxing";
 
 const BarcodeScanner = () => {
     const [result, setResult] = useState("");
+    const [facingMode, setFacingMode] = useState("environment");
     const { ref } = useZxing({
         onDecodeResult(result) {
             setResult(result.getText());
+        },
+        constraints: {
+            video: {
+                facingMode: facingMode,
+            },
         },
     });
 
@@ -49,6 +55,10 @@ const BarcodeScanner = () => {
         };
     }, [ref]);
 
+    const toggleCamera = () => {
+        setFacingMode(facingMode === "environment" ? "user" : "environment");
+    };
+
     return (
         <>
             <video ref={ref} style={{ width: "300px", height: "300px" }} autoPlay />
@@ -56,6 +66,7 @@ const BarcodeScanner = () => {
                 <span>EAN code:</span>
                 <span>{result}</span>
             </p>
+            <button onClick={toggleCamera}>Toggle Camera</button>
         </>
     );
 };
