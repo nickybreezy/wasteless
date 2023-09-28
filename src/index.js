@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import Map from './Map';
 import BadgesPage from './BadgesPage';
+import Scanner from './Scanner';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,9 @@ const router = createBrowserRouter([
   {
     path: "/badges", element: <BadgesPage />
   },
+  {
+    path: "/scanner", element: <Scanner />
+  }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

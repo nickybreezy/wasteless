@@ -6,7 +6,7 @@ import './App.css';
 import { BiScan, BiCurrentLocation, BiHome } from 'react-icons/bi';
 import { BiAward } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-
+import BottomBar from './BottomBar.js';
 function App() {
   const [productData, setProductData] = useState({});
   const [scannedBarcode, setScannedBarcode] = useState('');
@@ -47,22 +47,12 @@ function App() {
             <p>Dit product is niet recyclebaar.</p>
           )}
         </div>
+        <button onClick={() => handleScan('456789123')}>
+          Mock scan
+        </button>
         <BarcodeScanner />
 
-        <div className="bottom-bar">
-          <Link to={"/"} className="btn btn-solid">
-            <BiHome style={{ color: 'white' }} />
-          </Link>
-          <Link to={"/badges"} className="btn btn-solid">
-            <BiAward style={{ color: 'white' }} />
-          </Link>
-          <button className="btn btn-solid" onClick={() => handleScan('456789123')}>
-            <BiScan style={{ color: 'white' }} />
-          </button>
-          <Link to={"/map"} className="btn btn-solid">
-            <BiCurrentLocation style={{ color: 'white' }} />
-          </Link>
-        </div>
+        <BottomBar />
       </div>
     </div>
 
