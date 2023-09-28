@@ -6,10 +6,9 @@ import './App.css';
 import { BiScan, BiCurrentLocation, BiHome } from 'react-icons/bi';
 import { BiAward } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-import BarcodeScanner from './BarcodeScanner';
 
 function App() {
-  const [, setProductData] = useState({});
+  const [productData, setProductData] = useState({});
   const [scannedBarcode, setScannedBarcode] = useState('');
   const [scanning, setScanning] = useState(false);
 
