@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import productDataJson from './productData.json';
-import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { BiScan, BiCurrentLocation, BiHome } from 'react-icons/bi';
+import './Map.css';
+import { BiHome, BiScan } from 'react-icons/bi';
+import { BiCurrentLocation } from 'react-icons/bi';
 import { BiAward } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import MapComponent from './MapComponent';
 
-function App() {
+function Map() {
   const [productData, setProductData] = useState({});
   const [scannedBarcode, setScannedBarcode] = useState('');
   const [scanning, setScanning] = useState(false);
@@ -35,7 +36,6 @@ function App() {
     <div className="app-container">
       <div className="custom-bg">
         <div>
-          <h2>Home</h2>
           <h2>Productinformatie</h2>
           <p>Gescande barcode: {scannedBarcode}</p>
           <p>Naam: {productData.name}</p>
@@ -47,8 +47,7 @@ function App() {
             <p>Dit product is niet recyclebaar.</p>
           )}
         </div>
-        <BarcodeScanner />
-        <BarcodeScanner />
+        <MapComponent />
         <div className="bottom-bar">
           <Link to={"/"} className="btn btn-solid">
             <BiHome style={{ color: 'white' }} />
@@ -64,9 +63,12 @@ function App() {
           </Link>
         </div>
       </div>
+
+
+
     </div>
 
   );
 }
 
-export default App;
+export default Map
