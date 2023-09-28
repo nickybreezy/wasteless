@@ -7,7 +7,7 @@ import { BiCurrentLocation } from 'react-icons/bi';
 import { BiAward } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import MapComponent from './MapComponent';
-
+import BottomBar from './BottomBar.js';
 function Map() {
   const [productData, setProductData] = useState({});
   const [scannedBarcode, setScannedBarcode] = useState('');
@@ -48,20 +48,7 @@ function Map() {
           )}
         </div>
         <MapComponent />
-        <div className="bottom-bar">
-          <Link to={"/"} className="btn btn-solid">
-            <BiHome style={{ color: 'white' }} />
-          </Link>
-          <Link to={"/badges"} className="btn btn-solid">
-            <BiAward style={{ color: 'white' }} />
-          </Link>
-          <button className="btn btn-solid" onClick={() => handleScan('456789123')}>
-            <BiScan style={{ color: 'white' }} />
-          </button>
-          <Link to={"/map"} className="btn btn-solid">
-            <BiCurrentLocation style={{ color: 'white' }} />
-          </Link>
-        </div>
+        <BottomBar />
       </div>
 
 
