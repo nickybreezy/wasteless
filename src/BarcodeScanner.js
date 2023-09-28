@@ -1,40 +1,49 @@
-import React, { useState } from "react";
-import { VisionCamera, useFrameProcessor } from "react-vision-camera";
-import { BarcodeReader } from "dynamsoft-javascript-barcode";
-
-BarcodeReader.license =
-    "DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAyMjU3OTYxLVRYbFhaV0pRY205cVgyUmljZyIsIm1haW5TZXJ2ZXJVcDI6Imh0dHBzOi8vbXB2LnNkdy5keW5hbXNvZnRvbmxpbmUuY29tIiwib3JnYW5pemF0aW9uSUQiOiIxMDIyNTc5NjEiLCJzdGFuZGJ5U2VydmljZVJlcXVlc3QiOiJodHRwczovL2luYm94LmJpbmFyeXR5LmR5bmFtc29mdG9ubGluZS5jb20vIiwiY2hlY2tDb2RlIjo1MDYwMDg5N30=";
+import React, { useState, useEffect, useRef } from "react";
+import { useZxing } from "react-zxing";
 
 const BarcodeScanner = () => {
-    const [barcode, setBarcode] = useState("");
+    const [result, setResult] = useState("");
+    const ref = useRef(null);
 
-    const onMessage = (message) => {
-        setBarcode(message.barcodeText);
-    };
+    useEffect(() => {
+        // Check if the required APIs are available
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            console.error("getUserMedia is not supported in this browser");
+            return;
+        }
 
-    const frameProcessor = useFrameProcessor((frame) => {
-        "worklet";
-        const reader = new BarcodeReader();
-        reader.setBarcodeFormats(BarcodeReader.EnumBarcodeFormat.EAN_13);
-        reader.decodeBuffer(frame.data, frame.width, frame.height).then((results) => {
-            if (results.length > 0) {
-                const barcodeText = results[0].barcodeText;
-                VisionCamera.sendHostMessage({ barcodeText });
-            }
-        });
+        // Request camera permission using getUserMedia
+        navigator.mediaDevices
+            .getUserMedia({ video: true })
+            .then((stream) => {
+                console.log("Camera stream started successfully");
+
+                // Check if the reference and current property exist
+                if (ref && ref.current) {
+                    ref.current.srcObject = stream;
+                    ref.current.play();
+                } else {
+                    console.error("Video element reference is not available");
+                }
+            })
+            .catch((error) => {
+                console.error("Error accessing camera:", error);
+            });
+    }, [ref]);
+
+    useZxing({
+        ref: ref,
+        onDecodeResult: (result) => setResult(result.getText())
     });
 
     return (
-        <div style={{ flex: 1 }}>
-            <VisionCamera
-                style={{ flex: 1 }}
-                frameProcessor={frameProcessor}
-                onHostMessage={onMessage}
-            />
-            <div style={{ fontSize: 24, textAlign: "center" }}>
-                {barcode ? `EAN code: ${barcode}` : "No barcode detected"}
-            </div>
-        </div>
+        <>
+            <video ref={ref} style={{ width: "300px", height: "300px" }} />
+            <p>
+                <span>EAN code:</span>
+                <span>{result}</span>
+            </p>
+        </>
     );
 };
 
