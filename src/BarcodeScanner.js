@@ -52,11 +52,6 @@ const BarcodeScanner = () => {
     return (
         <>
             <video ref={ref} style={{ width: "300px", height: "300px" }} autoPlay />
-            <video ref={ref} style={{ width: "300px", height: "300px" }} />
-            <span style={{ position: "relative" }}>
-                <video ref={ref} style={{ width: "300px", aspectRatio: 1, border: '1px solid black', position: "absolute" }} />
-                <span style={{ width: "300px", aspectRatio: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: "black", color: "white", border: '1px solid black' }}>Camera not available</span>
-            </span>
             <p>
                 <span>EAN code:</span>
                 <span>{result}</span>

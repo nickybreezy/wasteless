@@ -48,7 +48,7 @@ function App() {
           )}
         </div>
         <BarcodeScanner />
-        <BarcodeScanner />
+
         <div className="bottom-bar">
           <Link to={"/"} className="btn btn-solid">
             <BiHome style={{ color: 'white' }} />
