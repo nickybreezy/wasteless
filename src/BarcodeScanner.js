@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useZxing } from "react-zxing";
-
+import productData from "./productData.json";
 const BarcodeScanner = () => {
     const [result, setResult] = useState("");
     const [facingMode, setFacingMode] = useState("environment");

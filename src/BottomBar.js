@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import productDataJson from './productData.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BiHome, BiScan } from 'react-icons/bi';

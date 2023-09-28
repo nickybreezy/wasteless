@@ -1,0 +1,22 @@
+{
+  "entities": [
+    {
+      "id": "2950012652552",
+      "name": "Mouse",
+      "material": "Plastic",
+      "recyclable": true
+    },
+    {
+      "id": "59095934",
+      "name": "Dove MEN+CARE",
+      "material": "Metaal",
+      "recyclable": false
+    },
+    {
+      "id": "456789123",
+      "name": "Product C",
+      "material": "Glas",
+      "recyclable": false
+    }
+  ]
+}

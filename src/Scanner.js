@@ -1,46 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { useZxing } from "react-zxing";
-import productDataJson from './productData.json';
 import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BiScan, BiCurrentLocation, BiHome } from 'react-icons/bi';
-import { BiAward } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
 import BottomBar from './BottomBar.js';
 const Scanner = () => {
-    const [productData, setProductData] = useState({});
+    const [entities, setEntities] = useState([]);
 
+    const getData = () => {
+        var requestOptions = {
+            method: "GET",
+            redirect: "follow",
+        };
 
-    const [result, setResult] = useState("");
-    const [scanning, setScanning] = useState(false);
-    const [scannedBarcode, setScannedBarcode] = useState("");
-    const { ref } = useZxing({
-        onDecodeResult(result) {
-            setResult(result.getText());
-        },
-    });
+        fetch("http://localhost:3030/entities", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setEntities(result))
+            .catch((error) => console.log("error", error));
+    };
 
     useEffect(() => {
-        if (scanning) {
-            const data = productDataJson[scannedBarcode];
+        getData();
+    }, []);
 
-            if (data) {
-                setProductData(data);
-            } else {
-                console.error('Product niet gevonden');
-            }
+    // const [productData, setProductData] = useState({});
+    // const [result, setResult] = useState("");
+    // const [scanning, setScanning] = useState(false);
+    // const [scannedBarcode, setScannedBarcode] = useState("");
+    // const { ref } = useZxing({
+    //     onDecodeResult(result) {
+    //         setResult(result.getText());
+    //     },
+    // });
+    // useEffect(() => {
+    //     if (scanning) {
+    //         const data = productDataJson[scannedBarcode];
 
-            setScanning(false);
-        }
-    }, [scannedBarcode, scanning]);
+    //         if (data) {
+    //             setProductData(data);
+    //         } else {
+    //             console.error('Product niet gevonden');
+    //         }
 
-
-
-    const handleScan = (barcode) => {
-        setScannedBarcode(barcode);
-        setScanning(true);
-    };
+    //         setScanning(false);
+    //     }
+    // }, [scannedBarcode, scanning]);
+    // const handleScan = (barcode) => {
+    //     setScannedBarcode(barcode);
+    //     setScanning(true);
+    // };
 
     return (
         <div className="app-container">
@@ -48,17 +56,17 @@ const Scanner = () => {
                 <div>
                     <h2>Home</h2>
                     <h2>Productinformatie</h2>
-                    <p>Gescande barcode: {scannedBarcode}</p>
-                    <p>Naam: {productData.name}</p>
-                    <p>Materiaal: {productData.material}</p>
 
-                    {productData.recyclable ? (
-                        <p>Dit product is recyclebaar.</p>
-                    ) : (
-                        <p>Dit product is niet recyclebaar.</p>
-                    )}
+                    {entities.map((entity) => (
+                        <div key={entity.id}>
+                            <h3>
+                                <span>{entity.id}</span> {entity.name}
+                            </h3>
+                            <p>{entity.material}</p>
+                        </div>
+                    ))}
                 </div>
-                <button onClick={() => handleScan("456789123")}>Mock scan</button>
+
                 <BarcodeScanner />
                 <BottomBar />
 

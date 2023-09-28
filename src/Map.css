@@ -1,6 +1,7 @@
 .custom-bg {
   display: flex;
   flex-direction: column;
+  background-color: #61876e;
 }
 
 .app-container {
