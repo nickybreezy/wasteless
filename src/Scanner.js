@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useZxing } from "react-zxing";
 import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import BottomBar from './BottomBar.js';
 const Scanner = () => {
     const [entities, setEntities] = useState([]);
+    const [scannedEAN, setScannedEAN] = useState("");
+    const [scannedEntity, setScannedEntity] = useState(null);
 
     const getData = () => {
         var requestOptions = {
@@ -23,55 +24,55 @@ const Scanner = () => {
         getData();
     }, []);
 
-    // const [productData, setProductData] = useState({});
-    // const [result, setResult] = useState("");
-    // const [scanning, setScanning] = useState(false);
-    // const [scannedBarcode, setScannedBarcode] = useState("");
-    // const { ref } = useZxing({
-    //     onDecodeResult(result) {
-    //         setResult(result.getText());
-    //     },
-    // });
-    // useEffect(() => {
-    //     if (scanning) {
-    //         const data = productDataJson[scannedBarcode];
+    const handleScanResult = (ean) => {
+        console.log("Scanned EAN:", ean);
+        const scannedEntity = entities.find((entity) => entity.ean === ean);
+        console.log("Scanned Entity:", scannedEntity);
 
-    //         if (data) {
-    //             setProductData(data);
-    //         } else {
-    //             console.error('Product niet gevonden');
-    //         }
-
-    //         setScanning(false);
-    //     }
-    // }, [scannedBarcode, scanning]);
-    // const handleScan = (barcode) => {
-    //     setScannedBarcode(barcode);
-    //     setScanning(true);
-    // };
+        if (scannedEntity) {
+            setScannedEntity(scannedEntity);
+        } else {
+            setScannedEntity(null);
+        }
+    };
 
     return (
-        <div className="app-container">
-            <div className="custom-bg">
-                <div>
-                    <h2>Home</h2>
-                    <h2>Productinformatie</h2>
+        <div>
+            <h2 className="Title">Home</h2>
+            <div className="app-container">
+                <div className="custom-bg">
+                    <h2 style={{ color: "#f7ffe5" }}>Information </h2>
+                    <div>
+                        {scannedEntity && (
+                            <div className="scanned-entity">
+                                <h3 className="title-description">
+                                    Product:  </h3> <span> </span> <h4 className="description">{scannedEntity.name} ({scannedEntity.ean})</h4>
+                                <h3 className="title-description">
+                                    Material:  </h3>
+                                <h4 className="description">   <p>{scannedEntity.material}</p> </h4>
+                                <h3 className="title-description">
+                                    Recyclable:  </h3>
+                                <h4 className="description">   <p>                                {scannedEntity.recyclable ? (
+                                    <p>Yes! Visit the map to see where you need to go</p>
+                                ) : (
+                                    <p>Unfortunately this product cannot be recycled</p>
+                                )}</p> </h4>
 
-                    {entities.map((entity) => (
-                        <div key={entity.id}>
-                            <h3>
-                                <span>{entity.id}</span> {entity.name}
-                            </h3>
-                            <p>{entity.material}</p>
-                        </div>
-                    ))}
+                            </div>
+                        )}
+
+                    </div>
+
+                    <BarcodeScanner onScan={handleScanResult} />
+
+                    <BottomBar />
+
                 </div>
-
-                <BarcodeScanner />
-                <BottomBar />
-
             </div>
+
+
         </div>
+
     );
 };
 

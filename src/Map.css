@@ -5,7 +5,9 @@
 }
 
 .app-container {
-  height: 100vh;
+
   background-color: #61876e;
   padding: 24px;
+  box-sizing: border-box;
+  flex: 1;
 }

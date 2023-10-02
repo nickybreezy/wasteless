@@ -11,10 +11,12 @@ function App() {
 
 
   return (
-    <div className="app-container">
-      <div className="custom-bg">
-        <div>
-          <h2>Home</h2>
+    <div className='Title'>
+      <h2>Home</h2>
+      <div className="app-container">
+        <div className="custom-bg">
+
+
 
 
           <BottomBar />

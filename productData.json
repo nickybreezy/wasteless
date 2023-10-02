@@ -1,22 +1,32 @@
 {
   "entities": [
     {
-      "id": "2950012652552",
+      "id": 1,
+      "ean": "2950012652552",
       "name": "Mouse",
       "material": "Plastic",
       "recyclable": true
     },
     {
-      "id": "59095934",
+      "id": 2,
+      "ean": "59095934",
       "name": "Dove MEN+CARE",
       "material": "Metaal",
       "recyclable": false
     },
     {
-      "id": "456789123",
+      "id": 3,
+      "ean": "456789123",
       "name": "Product C",
       "material": "Glas",
       "recyclable": false
+    },
+    {
+      "id": 4,
+      "ean": "8711292034001",
+      "name": "Batterij CR2032",
+      "material": "Metaal",
+      "recyclable": true
     }
   ]
 }
