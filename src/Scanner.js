@@ -2,20 +2,12 @@ import React, { useState, useEffect } from "react";
 import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
 import BottomBar from './BottomBar.js';
 const Scanner = () => {
     const [entities, setEntities] = useState([]);
     const [scannedEAN, setScannedEAN] = useState("");
     const [scannedEntity, setScannedEntity] = useState(null);
-    const express = require("express");
-    const cors = require("cors");
-    const app = express();
-    app.use(cors({
-        origin: allowedOrigin,
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-        credentials: true,
-    }));
+
     const getData = () => {
         var requestOptions = {
             method: "GET",
@@ -31,9 +23,7 @@ const Scanner = () => {
     useEffect(() => {
         getData();
     }, []);
-    app.listen(3030, () => {
-        console.log("Server is running on port 3030");
-    });
+
     const handleScanResult = (ean) => {
         console.log("Scanned EAN:", ean);
         const scannedEntity = entities.find((entity) => entity.ean === ean);
