@@ -14,7 +14,7 @@ const Scanner = () => {
             redirect: "follow",
         };
 
-        fetch("http://localhost:3030/entities", requestOptions)
+        fetch("https://651c44d6194f77f2a5afa17e.mockapi.io/entities", requestOptions)
             .then((response) => response.json())
             .then((result) => setEntities(result))
             .catch((error) => console.log("error", error));
@@ -52,11 +52,14 @@ const Scanner = () => {
                                 <h4 className="description">   <p>{scannedEntity.material}</p> </h4>
                                 <h3 className="title-description">
                                     Recyclable:  </h3>
-                                <h4 className="description">   <p>                                {scannedEntity.recyclable ? (
-                                    <p>Yes! Visit the map to see where you need to go</p>
-                                ) : (
-                                    <p>Unfortunately this product cannot be recycled</p>
-                                )}</p> </h4>
+                                <h4 className="description">   <p>
+                                    {scannedEntity.recyclable ? (
+                                        <span>Yes! Visit the map to see where you need to go</span>
+                                    ) : (
+                                        <span>Unfortunately, this product cannot be recycled</span>
+                                    )}
+                                </p>
+                                </h4>
 
                             </div>
                         )}
