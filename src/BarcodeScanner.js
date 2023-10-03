@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useZxing } from "react-zxing";
-import productData from "./productData.json";
-const BarcodeScanner = () => {
+import { BiCamera } from 'react-icons/bi';
+const BarcodeScanner = ({ onScan }) => {
     const [result, setResult] = useState("");
     const [facingMode, setFacingMode] = useState("environment");
     const { ref } = useZxing({
         onDecodeResult(result) {
+            console.log("Scanned EAN in BarcodeScanner:", result.getText());
             setResult(result.getText());
+            onScan(result.getText());
         },
         constraints: {
             video: {
@@ -60,14 +62,16 @@ const BarcodeScanner = () => {
     };
 
     return (
-        <>
-            <video ref={ref} style={{ width: "300px", height: "300px" }} autoPlay />
-            <p>
-                <span>EAN code:</span>
-                <span>{result}</span>
-            </p>
-            <button onClick={toggleCamera}>Toggle Camera</button>
-        </>
+        <div className="scanner-container">
+            <video ref={ref} style={{ width: "300px", border: "1px solid #f7ffe5" }} autoPlay />
+            <div style={{ textAlign: "center" }}>
+                <p>
+                    <span>EAN: </span>
+                    <span>{result}</span>
+                </p>
+                <button className=" btn btn-outline-light" onClick={toggleCamera}>Toggle  <BiCamera style={{ color: 'white' }} /></button>
+            </div>
+        </div>
     );
 };
 
