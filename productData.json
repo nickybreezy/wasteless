@@ -19,7 +19,7 @@
       "ean": "682430611751",
       "name": "VOSS Waterfles",
       "material": "Glas",
-      "recyclable": false
+      "recyclable": true
     },
     {
       "id": 4,
