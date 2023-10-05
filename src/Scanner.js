@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -80,3 +81,4 @@ const Scanner = () => {
 };
 
 export default Scanner;
+

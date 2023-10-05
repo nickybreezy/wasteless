@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import BottomBar from './BottomBar.js';
+import MainLogo from './assets/logo.svg'
+import { Link } from 'react-router-dom';
+
 function App() {
 
 
-
   return (
-    <div className='Title'>
-      <h2>Home</h2>
-      <div className="app-container">
-        <div className="custom-bg">
-
-
-
-
+    <div className="app-container">
+      <div className="custom-bg">
+        <div className='home'>
+          <span style={{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>
+            <h2 style={{fontSize: '4em'}}>Wasteless</h2>
+            <img width={100} src={MainLogo} alt="Logo"/>
+          </span>
+          <Link to={'/home'} className='home-button'>
+            <h1>Get Started</h1>
+          </Link>
           <BottomBar />
+             
+
         </div>
       </div>
     </div>

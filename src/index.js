@@ -11,6 +11,8 @@ import Map from './Map';
 import BadgesPage from './BadgesPage';
 import Scanner from './Scanner';
 
+import Home from './home'
+
 const router = createBrowserRouter([
   {
     path: "/", element: <App />
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/scanner", element: <Scanner />
+
+  },
+  {
+    path: "/home", element: <Home />
   }
 ])
 

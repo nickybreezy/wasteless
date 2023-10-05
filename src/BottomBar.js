@@ -1,6 +1,5 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import { BiHome, BiScan } from 'react-icons/bi';
 import { BiCurrentLocation } from 'react-icons/bi';
 import { BiAward } from 'react-icons/bi';
@@ -28,10 +27,8 @@ function BottomBar() {
                     </Link>
                 </div>
             </div>
-
-
-
         </div>
+
 
     );
 }
