@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   background-color: #61876e;
+  gap: 3rem;
 }
 
 .app-container {
 
   background-color: #61876e;
   padding: 24px;
-
 }
 
 .map-icons{

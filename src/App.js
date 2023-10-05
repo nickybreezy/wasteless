@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MainLogo from './assets/logo.svg'
 import { Link } from 'react-router-dom';
+import BottomBar from './BottomBar'
 
 function App() {
 
