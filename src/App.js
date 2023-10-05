@@ -1,55 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import productDataJson from './productData.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BiScan, BiCurrentLocation, BiHome } from 'react-icons/bi';
-import { BiAward } from 'react-icons/bi';
+import MainLogo from './assets/logo.svg'
 import { Link } from 'react-router-dom';
-import BarcodeScanner from './BarcodeScanner';
 
 function App() {
-  const [, setProductData] = useState({});
-  const [scannedBarcode, setScannedBarcode] = useState('');
-  const [scanning, setScanning] = useState(false);
 
-  useEffect(() => {
-    if (scanning) {
-      const data = productDataJson[scannedBarcode];
-
-      if (data) {
-        setProductData(data);
-      } else {
-        console.error('Product niet gevonden');
-      }
-
-      setScanning(false);
-    }
-  }, [scannedBarcode, scanning]);
-
-  const handleScan = (barcode) => {
-    setScannedBarcode(barcode);
-    setScanning(true);
-  };
 
   return (
     <div className="app-container">
       <div className="custom-bg">
-        <div>
-          <h2>Home</h2>
-        </div>
-        <BarcodeScanner/>
-        <div className="bottom-bar">
-          <Link to={"/"} className="btn btn-solid">
-            <BiHome style={{ color: 'white' }} />
-          </Link>
-          <Link to={"/badges"} className="btn btn-solid">
-            <BiAward style={{ color: 'white' }} />
-          </Link>
-          <button className="btn btn-solid" onClick={() => handleScan('456789123')}>
-            <BiScan style={{ color: 'white' }} />
-          </button>
-          <Link to={"/map"} className="btn btn-solid">
-            <BiCurrentLocation style={{ color: 'white' }} />
+        <div className='home'>
+          <span style={{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>
+            <h2 style={{fontSize: '4em'}}>Wasteless</h2>
+            <img width={100} src={MainLogo} alt="Logo"/>
+          </span>
+          <Link to={'/home'} className='home-button'>
+            <h1>Get Started</h1>
           </Link>
         </div>
       </div>

@@ -8,3 +8,18 @@
   background-color: #61876e;
   padding: 24px;
 }
+
+.map-icons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.map-icons-align{
+  display: flex;
+  color: #F7FFE5;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-items: center;
+}

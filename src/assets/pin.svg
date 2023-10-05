@@ -9,6 +9,6 @@
     </defs>
     <g fill="none" fill-rule="nonzero">
         <use fill="#000" filter="url(#a)" xlink:href="#b"/>
-        <use fill="#FCFCFC" fill-rule="evenodd" xlink:href="#b"/>
+        <use fill="#df3b30" fill-rule="evenodd" xlink:href="#b"/>
     </g>
 </svg>

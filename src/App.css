@@ -62,3 +62,27 @@
   height: 100vh;
   background-color: #61876E;
 }
+
+.home-button{
+  width: fit-content;
+  background-color: #F7FFE5;
+  color: #61876E;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.5rem;
+  height: fit-content;
+  padding: 0.5rem;
+}
+
+.home-button h1{
+  padding-inline: 2rem;
+}
+
+.home{
+  color: #F7FFE5;
+  display: flex;
+  height: 90vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
