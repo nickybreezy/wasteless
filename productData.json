@@ -1,0 +1,32 @@
+{
+  "entities": [
+    {
+      "id": 1,
+      "ean": "2950012652552",
+      "name": "Mouse",
+      "material": "Plastic",
+      "recyclable": true
+    },
+    {
+      "id": 2,
+      "ean": "59095934",
+      "name": "Dove MEN+CARE",
+      "material": "Metaal",
+      "recyclable": false
+    },
+    {
+      "id": 3,
+      "ean": "682430611751",
+      "name": "VOSS Waterfles",
+      "material": "Glas",
+      "recyclable": true
+    },
+    {
+      "id": 4,
+      "ean": "8711292034001",
+      "name": "Batterij CR2032",
+      "material": "Metaal",
+      "recyclable": true
+    }
+  ]
+}

@@ -18,10 +18,12 @@ function App() {
           <Link to={'/home'} className='home-button'>
             <h1>Get Started</h1>
           </Link>
+          <BottomBar />
+             
+
         </div>
       </div>
     </div>
-
   );
 }
 

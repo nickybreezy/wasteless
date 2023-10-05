@@ -1,12 +1,14 @@
 .custom-bg {
   display: flex;
   flex-direction: column;
+  background-color: #61876e;
 }
 
 .app-container {
-  height: 100vh;
+
   background-color: #61876e;
   padding: 24px;
+
 }
 
 .map-icons{
@@ -22,4 +24,7 @@
   font-size: 1.5rem;
   font-weight: bold;
   align-items: center;
+  box-sizing: border-box;
+  flex: 1;
+
 }

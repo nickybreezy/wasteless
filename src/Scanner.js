@@ -1,45 +1,84 @@
-import React, { useEffect, useState } from 'react';
-import productDataJson from './productData.json';
+
+import React, { useState, useEffect } from "react";
+import BarcodeScanner from './BarcodeScanner.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import BarcodeScanner from './BarcodeScanner';
-import BottomBar from './BottomBar';
+import BottomBar from './BottomBar.js';
+const Scanner = () => {
+    const [entities, setEntities] = useState([]);
+    const [scannedEAN, setScannedEAN] = useState("");
+    const [scannedEntity, setScannedEntity] = useState(null);
 
-function Scanner() {
-  const [, setProductData] = useState({});
-  const [scannedBarcode, setScannedBarcode] = useState('');
-  const [scanning, setScanning] = useState(false);
+    const getData = () => {
+        var requestOptions = {
+            method: "GET",
+            redirect: "follow",
+        };
 
-  useEffect(() => {
-    if (scanning) {
-      const data = productDataJson[scannedBarcode];
+        fetch("https://651c44d6194f77f2a5afa17e.mockapi.io/entities", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setEntities(result))
+            .catch((error) => console.log("error", error));
+    };
 
-      if (data) {
-        setProductData(data);
-      } else {
-        console.error('Product niet gevonden');
-      }
+    useEffect(() => {
+        getData();
+    }, []);
 
-      setScanning(false);
-    }
-  }, [scannedBarcode, scanning]);
+    const handleScanResult = (ean) => {
+        console.log("Scanned EAN:", ean);
+        const scannedEntity = entities.find((entity) => entity.ean === ean);
+        console.log("Scanned Entity:", scannedEntity);
 
-  const handleScan = (barcode) => {
-    setScannedBarcode(barcode);
-    setScanning(true);
-  };
+        if (scannedEntity) {
+            setScannedEntity(scannedEntity);
+        } else {
+            setScannedEntity(null);
+        }
+    };
 
-  return (
-    <div className="app-container">
-      <div className="custom-bg">
+    return (
         <div>
-          <h2>Scanner</h2>
-        </div>
-        <BottomBar/>
-      </div>
-    </div>
+            <h2 className="Title">Home</h2>
+            <div className="app-container">
+                <div className="custom-bg">
+                    <h2 style={{ color: "#f7ffe5" }}>Information </h2>
+                    <div>
+                        {scannedEntity && (
+                            <div className="scanned-entity">
+                                <h3 className="title-description">
+                                    Product:  </h3> <span> </span> <h4 className="description">{scannedEntity.name} ({scannedEntity.ean})</h4>
+                                <h3 className="title-description">
+                                    Material:  </h3>
+                                <h4 className="description">   <p>{scannedEntity.material}</p> </h4>
+                                <h3 className="title-description">
+                                    Recyclable:  </h3>
+                                <h4 className="description">   <p>
+                                    {scannedEntity.recyclable ? (
+                                        <span>Yes! Visit the map to see where you need to go</span>
+                                    ) : (
+                                        <span>Unfortunately, this product cannot be recycled</span>
+                                    )}
+                                </p>
+                                </h4>
 
-  );
-}
+                            </div>
+                        )}
+
+                    </div>
+
+                    <BarcodeScanner onScan={handleScanResult} />
+
+                    <BottomBar />
+
+                </div>
+            </div>
+
+
+        </div>
+
+    );
+};
 
 export default Scanner;
+

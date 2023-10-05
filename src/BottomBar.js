@@ -10,9 +10,10 @@ function BottomBar() {
 
 
     return (
+        <div className="app-container">
             <div className="custom-bg">
                 <div className="bottom-bar">
-                    <Link to={"/home"} className="btn btn-solid">
+                    <Link to={"/"} className="btn btn-solid">
                         <BiHome style={{ color: 'white' }} />
                     </Link>
                     <Link to={"/badges"} className="btn btn-solid">
@@ -26,6 +27,9 @@ function BottomBar() {
                     </Link>
                 </div>
             </div>
+        </div>
+
+
     );
 }
 

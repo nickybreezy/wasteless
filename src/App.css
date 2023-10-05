@@ -56,10 +56,22 @@
 
 }
 
-
+.Title {
+  font-size: 2em;
+  font-weight: bold;
+  color: #3C6255;
+  background-color: #61876E;
+  margin: 0;
+  padding: 0;
+}
 
 .app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+
   background-color: #61876E;
 }
 
@@ -85,4 +97,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+
+  overflow: scroll;
+}
+
+.scanner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.title-description {
+  font-size: 1.5em;
+  color: #B9EED1;
+}
+
+.description {
+  font-size: 1em;
+  color: #F7FFE5;
+
 }

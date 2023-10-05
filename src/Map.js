@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Map.css';
@@ -15,6 +16,7 @@ function Map() {
   return (
     <div className="app-container">
       <div className="custom-bg">
+
         <div className='home-top-bar'>
             <Link className='home-top-bar-button'>
                 <BiUser size={40}/>
@@ -41,7 +43,6 @@ function Map() {
         </div>
         <BottomBar/>
       </div>
-    </div>
 
   );
 }
