@@ -10,21 +10,28 @@ import { Link } from 'react-router-dom';
 import Electronic from './assets/electronic.svg'
 import Trash from './assets/trash.svg'
 import Organic from './assets/organic.svg'
+import { Overlay } from './Component/Overlay';
 
 function Map() {
+
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false)
 
   return (
     <div className="app-container">
       <div className="custom-bg">
 
-        <div className='home-top-bar'>
-            <Link className='home-top-bar-button'>
+        <div className='map-top-bar'>
+            <Link className='map-top-bar-button'>
                 <BiUser size={40}/>
             </Link>
             <img width={100} src={MainLogo} alt="Logo"/>
-            <Link className='home-top-bar-button'>
+            <Link className='map-top-bar-button' onClick={() => setIsOverlayOpen(!isOverlayOpen)}>
                 <BiSolidGrid size={40}/>
             </Link>
+            <Overlay
+                        isOpen={isOverlayOpen}
+                        onClose={() => setIsOverlayOpen(!isOverlayOpen)}
+                    ></Overlay>
           </div>
         <MapComponent />
         <div className='map-icons'>

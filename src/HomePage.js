@@ -5,8 +5,11 @@ import { BiUser, BiSolidGrid, BiInfoCircle } from 'react-icons/bi';
 import BottomBar from './BottomBar';
 import { Link } from 'react-router-dom';
 import MainLogo from './assets/logo.svg'
+import { Overlay } from './Component/Overlay';
 
 function Home() {
+
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false)
 
     return (
         <div className="app-container">
@@ -16,9 +19,14 @@ function Home() {
                         <BiUser size={40}/>
                     </Link>
                     <img width={100} src={MainLogo} alt="Logo"/>
-                    <Link className='home-top-bar-button'>
+
+                    <Link className='home-top-bar-button' onClick={() => setIsOverlayOpen(!isOverlayOpen)}>
                         <BiSolidGrid size={40}/>
                     </Link>
+                    <Overlay
+                        isOpen={isOverlayOpen}
+                        onClose={() => setIsOverlayOpen(!isOverlayOpen)}
+                    ></Overlay>
                 </div>
                 <div className='home-progress'>
                     <p>WasteLess Month</p>

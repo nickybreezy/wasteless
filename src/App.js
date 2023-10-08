@@ -7,7 +7,6 @@ import BottomBar from './BottomBar'
 
 function App() {
 
-
   return (
     <div className="app-container">
       <div className="custom-bg">

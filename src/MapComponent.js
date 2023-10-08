@@ -17,13 +17,12 @@ const center = {
 };
 
 const pins = [
-  { lat: 51.42563988023509, lng: 5.503565693469501 },
-  { lat: 51.434096937108194, lng: 5.448022281492776},
-  { lat: 51.482116591874004, lng: 5.41263598451376},
-  { lat: 51.42586679269022, lng: 5.467966081122911},
-  { lat: 51.44758982398288, lng: 5.462816239834164},
-  { lat: 51.43988628584372, lng: 5.4320030229680905},
-  { lat: 51.4497294650701, lng: 5.442903520299542}
+  { lat: 51.42563988023509, lng: 5.503565693469501, icon: Organic },
+  { lat: 51.434096937108194, lng: 5.448022281492776, icon: Organic},
+  { lat: 51.42586679269022, lng: 5.467966081122911, icon: Electronic},
+  { lat: 51.44758982398288, lng: 5.462816239834164, icon: Trash},
+  { lat: 51.43988628584372, lng: 5.4320030229680905, icon: Trash},
+  { lat: 51.4497294650701, lng: 5.442903520299542, icon: Electronic}
 ]
 
 function MyComponent() {
@@ -49,11 +48,11 @@ function MyComponent() {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
-      zoom={11}
+      zoom={12}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {pins.map((pin, index) => <Marker key={index} icon={PinIcon} position={pin} />)} 
+      {pins.map((pin, index) => <Marker key={index} icon={pin.icon ?? PinIcon} position={pin} />)} 
     </GoogleMap>
   ) : <></>
 }

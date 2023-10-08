@@ -10,12 +10,11 @@ import {
 import Map from './Map';
 import BadgesPage from './BadgesPage';
 import Scanner from './Scanner';
-
-import Home from './home'
+import HomePage from './HomePage'
 
 const router = createBrowserRouter([
   {
-    path: "/", element: <App />
+    path: "/home", element: <HomePage />
   },
   {
     path: "/map", element: <Map />
@@ -28,7 +27,7 @@ const router = createBrowserRouter([
 
   },
   {
-    path: "/home", element: <Home />
+    path: "/", element: <App />
   }
 ])
 
